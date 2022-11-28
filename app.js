@@ -1,15 +1,33 @@
-//using selectors inside the element
 // traversing the dom
 
-displayBtn = document.querySelector(".question-btn");
-plusSign = document.querySelector(".plus-icon");
-minusSign = document.querySelector(".minus-icon");
-qtn = document.querySelectorAll(".question");
+displayBtns = document.querySelectorAll(".question-btn");
+const questions = document.querySelectorAll(".question");
 
-console.log(displayBtn);
-
-displayBtn.addEventListener("click", () => {
-  qtn.forEach((e) => {
-    e.classList.add("show-text");
+displayBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const question = e.currentTarget.parentElement.parentElement;
+    // console.log(question);
+    question.classList.toggle("show-text");
+    questions.forEach((element) => {
+      if (element !== question) {
+        element.classList.remove("show-text");
+      }
+    });
   });
 });
+
+//using selectors inside the element
+
+// const questions = document.querySelectorAll(".question");
+
+// questions.forEach((qtn) => {
+//   const btn = qtn.querySelector(".question-btn");
+//   btn.addEventListener("click", () => {
+//     questions.forEach((e) => {
+//       if (e !== qtn) {
+//         e.classList.remove("show-text");
+//       }
+//     });
+//     qtn.classList.toggle("show-text");
+//   });
+// });
